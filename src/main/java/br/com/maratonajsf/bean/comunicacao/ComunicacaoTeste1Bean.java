@@ -1,9 +1,11 @@
 package br.com.maratonajsf.bean.comunicacao;
 
+import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Named
@@ -12,9 +14,6 @@ public class ComunicacaoTeste1Bean implements Serializable {
     private String nome;
     private String sobrenome;
     private Date data = new Date();
-
-
-
 
     public void imprimirAtributos() {
         String initParameter = FacesContext.getCurrentInstance()
