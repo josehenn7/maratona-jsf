@@ -2,6 +2,10 @@ package br.com.maratonajsf.model;
 
 import br.com.maratonajsf.model.enums.Turno;
 
+import java.util.List;
+
+import static java.util.Arrays.asList;
+
 public class Estudante {
     // nada a ver com bean
     private String nome = "José";
@@ -10,6 +14,21 @@ public class Estudante {
     private double nota2;
     private double nota3 = 10;
     private Turno turno = Turno.MATUTINO;
+
+    public Estudante() {
+    }
+
+    public Estudante(String nome, String sobrenome, double nota1) {
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.nota1 = nota1;
+    }
+
+    public static List<Estudante> estudanteList(){
+        return asList(new Estudante("Zzz", "Henn", 10),
+                new Estudante("Fucker", "Oblatonga", 10),
+                new Estudante("Seyaaa", "Lactobacilo", 10));
+    }
 
     public String getNome() {
         return nome;
