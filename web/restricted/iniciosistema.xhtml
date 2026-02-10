@@ -6,12 +6,24 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:body>
-  <h:head>
-    <h:form>
-      <h1>Usuario logado: #{loginBean.estudante.nome}</h1>
-      <h:commandButton value="Logout" action="#{loginBean.logout()}"/>
-    </h:form>
-  </h:head>
-</h:body>
+<head>
+
+</head>
+<f:view locale="#{loginBean.language}">
+    <h:outputText value="#{loginBean.language}"/>
+    <h:body>
+        <h:form>
+            <h1>#{m.userLogged} #{loginBean.estudante.nome}</h1>
+            <h:outputFormat value="#{m.userLogged}">
+                <f:param value="#{loginBean.estudante.nome}"/>
+                <f:param value="#{loginBean.estudante.sobrenome}"/>
+            </h:outputFormat> <br/>
+            <h:outputFormat value="#{m.alert}">
+                <f:param value="#{loginBean.qtdDeMensagens}"/>
+            </h:outputFormat>
+            <h:commandButton value="Logout" action="#{loginBean.logout()}"/>
+        </h:form>
+    </h:body>
+</f:view>
+
 </html>

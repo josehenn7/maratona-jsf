@@ -6,18 +6,26 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+
+</h:head>
+
 <h:body>
-    <h:head>
-        <h:form>
-            <h:panelGrid columns="1">
-                <p:messages autoUpdate="true"/>
-                <h:outputLabel value="Nome"/>
-                <h:inputText value="#{loginBean.nome}" required="true" requiredMessage="Nome por favor."/>
-                <h:outputLabel value="Senha"/>
-                <h:inputSecret value="#{loginBean.senha}" required="true" requiredMessage="Senha por favor."/>
-                <h:commandButton value="Logar" action="#{loginBean.logar}"/>
-            </h:panelGrid>
-        </h:form>
-    </h:head>
+    <h:form>
+        <h:panelGrid columns="1">
+            <p:messages autoUpdate="true"/>
+            <h:outputLabel value="Nome"/>
+            <h:inputText value="#{loginBean.nome}" required="true" requiredMessage="Nome por favor."/>
+            <h:outputLabel value="Senha"/>
+            <h:inputSecret value="#{loginBean.senha}" required="true" requiredMessage="Senha por favor."/>
+            <h:selectOneMenu value="#{loginBean.language}">
+                <f:selectItems value="#{loginBean.localeList}"
+                              var="locale"
+                              itemValue="#{locale.language}"
+                              itemLabel="#{locale.displayLanguage}"/>
+            </h:selectOneMenu>
+            <h:commandButton value="Logar" action="#{loginBean.logar}"/>
+        </h:panelGrid>
+    </h:form>
 </h:body>
 </html>
