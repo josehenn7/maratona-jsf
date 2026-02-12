@@ -19,6 +19,8 @@ public class Estudante implements Serializable {
     private double nota3 = 10;
     private Turno turno = Turno.MATUTINO;
     private String email;
+    // @Transient
+    private transient boolean editing;
 
     public Estudante() {
     }
@@ -33,6 +35,14 @@ public class Estudante implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
+    }
+
+    public boolean isEditing() {
+        return editing;
+    }
+
+    public void setEditing(boolean editing) {
+        this.editing = editing;
     }
 
     public Estudante(String nome, String sobrenome, double nota1) {
@@ -50,6 +60,7 @@ public class Estudante implements Serializable {
 
     public static List<Estudante> estudanteList() {
         return new ArrayList<>(asList(new Estudante(1, "Zzz", "Henn", 10),
+                new Estudante(2, "Fucker", "Oblatonga", 10),
                 new Estudante(2, "Fucker", "Oblatonga", 10),
                 new Estudante(3, "Seyaaa", "Lactobacilo", 10)));
     }
@@ -116,5 +127,15 @@ public class Estudante implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Estudante{" +
+                "nome='" + nome + '\'' +
+                ", sobrenome='" + sobrenome + '\'' +
+                ", turno=" + turno +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

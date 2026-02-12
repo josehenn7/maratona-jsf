@@ -10,24 +10,124 @@
 <h:head>
 
 </h:head>
+<f:metadata>
+    <f:viewAction action="#{dataTableTesteBean.init}"/>
+</f:metadata>
+
 <h:body>
+    <p:importEnum type="br.com.maratonajsf.model.enums.Turno"
+                  var="JsfProjectStages"/>
     <p:messages autoUpdate="true"/>
     <h:form>
-        <h:panelGrid columns="1">
-            <h:outputText value="Password"/>
-            <h:inputSecret id="password" value="#{validationTesteBean.password}"
-                         required="true" requiredMessage="Type a password"/>
+        <h:dataTable value="#{dataTableTesteBean.estudanteList}" var="estudante">
+            <h:column>
+                <f:facet name="header">
+                    <h:commandLink actionListener="#{dataTableTesteBean.orderByNome('asc')}">
+                        Nome Asc
+                    </h:commandLink> <br/>
+                    <h:commandLink actionListener="#{dataTableTesteBean.orderByNome('desc')}">
+                        Nome Desc
+                    </h:commandLink>
+                </f:facet>
+                <h:outputText value="#{estudante.nome}" rendered="#{not estudante.editing}"/>
+                <h:inputText value="#{estudante.nome}" rendered="#{estudante.editing}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:commandLink actionListener="#{dataTableTesteBean.orderBySobrenome('asc')}">
+                        Sobrenome Asc
+                    </h:commandLink> <br/>
+                    <h:commandLink actionListener="#{dataTableTesteBean.orderBySobrenome('desc')}">
+                        Sobrenome Desc
+                    </h:commandLink>
+                </f:facet>
+                <h:outputText value="#{estudante.sobrenome}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Turno</f:facet>
+                <h:outputText value="#{estudante.turno}" rendered="#{not estudante.editing}"/>
+                <h:selectOneMenu value="#{estudante.turno}" rendered="#{estudante.editing}">
+                    <f:selectItems value="#{Turno}"
+                                   var="turno" itemValue="#{turno}" itemLabel="#{turno}"/>
+                </h:selectOneMenu>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Email</f:facet>
+                <h:outputText value="#{estudante.email}" rendered="#{not estudante.editing}"/>
+                <h:inputText value="#{estudante.email}" rendered="#{estudante.editing}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"> </f:facet>
+                <h:commandLink actionListener="#{dataTableTesteBean.remove(estudante)}"
+                               rendered="#{not estudante.editing}">
+                    <h:outputText value="Remover"/>
+                </h:commandLink>
+            </h:column>
 
-            <h:outputText value="Confirm your password"/>
-            <h:inputSecret id="confirm"
-                         required="true" requiredMessage="Confirm your password"/>
+            <h:column>
+                <f:facet name="header"> </f:facet>
+                <h:commandLink actionListener="#{dataTableTesteBean.edit(estudante)}"
+                               rendered="#{not estudante.editing}">
+                    <h:outputText value="Editar"/>
+                </h:commandLink>
+            </h:column>
+        </h:dataTable>
+        <h:commandButton value="Save" actionListener="#{dataTableTesteBean.save}"/>
+        <h:dataTable value="#{dataTableTesteBean.estudanteLinkedList}" var="estudante">
+            <h:column>
+                <f:facet name="header">Nome</f:facet>
+                <h:outputText value="#{estudante.nome}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Sobrenome</f:facet>
+                <h:outputText value="#{estudante.sobrenome}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Turno</f:facet>
+                <h:outputText value="#{estudante.turno}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Email</f:facet>
+                <h:outputText value="#{estudante.email}"/>
+            </h:column>
+        </h:dataTable>
+        <h:dataTable value="#{dataTableTesteBean.estudanteSet}" var="estudante">
+            <h:column>
+                <f:facet name="header">Nome</f:facet>
+                <h:outputText value="#{estudante.nome}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Sobrenome</f:facet>
+                <h:outputText value="#{estudante.sobrenome}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Turno</f:facet>
+                <h:outputText value="#{estudante.turno}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Email</f:facet>
+                <h:outputText value="#{estudante.email}"/>
+            </h:column>
+        </h:dataTable>
+        <h:dataTable value="#{dataTableTesteBean.mapEstudanteList.values()}" var="estudante">
+            <h:column>
+                <f:facet name="header">Nome</f:facet>
+                <h:outputText value="#{estudante.nome}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Sobrenome</f:facet>
+                <h:outputText value="#{estudante.sobrenome}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Turno</f:facet>
+                <h:outputText value="#{estudante.turno}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Email</f:facet>
+                <h:outputText value="#{estudante.email}"/>
+            </h:column>
+        </h:dataTable>
 
-            <o:validateEqual components="password confirm" message="Password are not equal"/>
-            <h:commandButton value="Save"
-                             actionListener="#{validationTesteBean.save}"/>
-
-
-        </h:panelGrid>
     </h:form>
 </h:body>
 </html>
