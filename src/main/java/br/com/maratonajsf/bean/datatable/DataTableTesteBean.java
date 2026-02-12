@@ -1,4 +1,4 @@
-package br.com.maratonajsf.bean.converter;
+package br.com.maratonajsf.bean.datatable;
 
 import br.com.maratonajsf.model.Estudante;
 
@@ -9,13 +9,8 @@ import java.util.List;
 
 @Named
 @ViewScoped
-public class ConverterTesteBean implements Serializable {
+public class DataTableTesteBean implements Serializable {
     private List<Estudante> estudanteList = Estudante.estudanteList();
-    private Estudante estudante = new Estudante();
-    public void save(){
-        System.out.println("Salvando");
-        System.out.println(estudante.getEmail());
-    }
 
     public List<Estudante> getEstudanteList() {
         return estudanteList;
@@ -23,13 +18,5 @@ public class ConverterTesteBean implements Serializable {
 
     public void setEstudanteList(List<Estudante> estudanteList) {
         this.estudanteList = estudanteList;
-    }
-
-    public Estudante getEstudante() {
-        return estudante;
-    }
-
-    public void setEstudante(Estudante estudante) {
-        this.estudante = estudante;
     }
 }

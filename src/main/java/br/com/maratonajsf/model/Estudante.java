@@ -2,13 +2,16 @@ package br.com.maratonajsf.model;
 
 import br.com.maratonajsf.model.enums.Turno;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static java.util.Arrays.asList;
 
-public class Estudante {
+public class Estudante implements Serializable {
     // nada a ver com bean
+    private Integer id;
     private String nome = "José";
     private String sobrenome = "Henn";
     private double nota1 = 20;
@@ -20,16 +23,43 @@ public class Estudante {
     public Estudante() {
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Estudante estudante = (Estudante) o;
+        return Objects.equals(id, estudante.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
+
     public Estudante(String nome, String sobrenome, double nota1) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.nota1 = nota1;
     }
 
-    public static List<Estudante> estudanteList(){
-        return new ArrayList<>(asList(new Estudante("Zzz", "Henn", 10),
-                new Estudante("Fucker", "Oblatonga", 10),
-                new Estudante("Seyaaa", "Lactobacilo", 10)));
+    public Estudante(Integer id, String nome, String sobrenome, double nota1) {
+        this.id = id;
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.nota1 = nota1;
+    }
+
+    public static List<Estudante> estudanteList() {
+        return new ArrayList<>(asList(new Estudante(1, "Zzz", "Henn", 10),
+                new Estudante(2, "Fucker", "Oblatonga", 10),
+                new Estudante(3, "Seyaaa", "Lactobacilo", 10)));
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {
