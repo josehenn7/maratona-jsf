@@ -10,9 +10,14 @@ public class AjaxTesteBean implements Serializable {
     private String nome;
     private String sobrenome;
     private String email;
-    public void toUpperCase(){
+
+    public void toUpperCase() {
         this.nome = this.nome.toUpperCase();
         this.sobrenome = this.sobrenome.toUpperCase();
+    }
+
+    public void toUpperCaseNome() {
+        this.nome = this.nome.toUpperCase();
     }
 
     public String getEmail() {
