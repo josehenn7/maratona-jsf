@@ -9,10 +9,18 @@ import java.io.Serializable;
 public class AjaxTesteBean implements Serializable {
     private String nome;
     private String sobrenome;
-
+    private String email;
     public void toUpperCase(){
         this.nome = this.nome.toUpperCase();
         this.sobrenome = this.sobrenome.toUpperCase();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getNome() {
