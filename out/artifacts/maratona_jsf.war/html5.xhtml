@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:o="http://omnifaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <!--    <meta name="color-scheme" content="light dark"/>-->
+</h:head>
+<h:body>
+    <p:messages autoUpdate="true" id="messages"/>
+    <f:metadata>
+        <f:viewAction action="#{htmlTesteBean.init}"/>
+    </f:metadata>
+    <h:form id="form">
+        <h:panelGrid columns="1">
+            <h:inputText value="#{htmlTesteBean.email}"
+                         pt:type="email"
+                         pt:placeholder="Digite seu email"/>
+            <input type="email" placeholder="Digite seu email"/>
+
+            <h:inputText value="#{htmlTesteBean.email}">
+                <f:passThroughAttribute name="type" value="email"/>
+                <f:passThroughAttribute name="placeholder" value="Digite seu email"/>
+            </h:inputText>
+            <h:inputText value="#{htmlTesteBean.email}">
+                <f:passThroughAttributes value="#{htmlTesteBean.attributes}"/>
+            </h:inputText>
+
+        </h:panelGrid>
+    </h:form>
+</h:body>
+</html>

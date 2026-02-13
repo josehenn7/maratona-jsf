@@ -10,11 +10,48 @@ import java.util.Map;
 @ViewScoped
 public class HtmlTesteBean implements Serializable {
     private String email;
-    private Map<String, String> attributes = new HashMap<>();
+    private String url;
+    private String nome;
+    private int numero;
 
+    public void toUpperCaseNome(){
+        this.nome = this.nome.toUpperCase();
+    }
+
+    private Map<String, String> attributes = new HashMap<>();
     public void init(){
         attributes.put("type", "email");
         attributes.put("placeholder", "Digite seu email");
+    }
+
+    public void salvar(){
+        System.out.println(email);
+        System.out.println(url);
+        System.out.println(numero);
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 
     public String getEmail() {
