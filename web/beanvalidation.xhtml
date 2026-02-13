@@ -18,7 +18,10 @@
 
     <h:form id="form">
         <h:panelGrid columns="1">
-            <h:inputText value="#{beanValidationTestBean.nome}" required="true"/>
+            <h:inputText value="#{beanValidationTestBean.nome}"/>
+            <h:inputText value="#{beanValidationTestBean.email}"/>
+            <h:inputText value="#{beanValidationTestBean.decimal}"/>
+            <h:inputText value="#{beanValidationTestBean.number}"/>
             <h:commandButton value="Salvar" actionListener="#{beanValidationTestBean.salvar}"/>
         </h:panelGrid>
     </h:form>
