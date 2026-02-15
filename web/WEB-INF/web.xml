@@ -9,7 +9,7 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
     <welcome-file-list>
-        <welcome-file>upload.xhtml</welcome-file>
+        <welcome-file>viewexpired.xhtml</welcome-file>
     </welcome-file-list>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
@@ -42,7 +42,17 @@
         <param-name>images.location</param-name>
         <param-value>C:\maratona-jsf</param-value>
     </context-param>
-<!--    <error-page>-->
-<!--        <location>/error.xhtml?faces-redirect=true</location>-->
-<!--    </error-page>-->
+    <context-param>
+        <param-name>com.sun.faces.enableRestoreView11Compatibility</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
+    <error-page>
+        <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+        <location>/expirederror.xhtml?faces-redirect=true</location>
+    </error-page>
+
+    <!--    <error-page>-->
+    <!--        <location>/error.xhtml?faces-redirect=true</location>-->
+    <!--    </error-page>-->
 </web-app>
